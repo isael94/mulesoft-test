@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="268f4386-424a-4d4d-b977-6af09e41fd72" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="holamacFlow" doc:id="8b3e9f12-1500-4a34-b337-19b9430b6e2e" >
+		<http:listener doc:name="Listener" doc:id="6a342917-b586-42cb-8061-a643eebbed16" config-ref="HTTP_Listener_config" path="/hola"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="bf42ee45-9149-4467-a8ec-e196aa9d9280" />
+		<logger level="INFO" doc:name="Logger" doc:id="e81568d3-5703-4906-b88a-ff3a879aaae4" message="#[payload]"/>
+	</flow>
+</mule>
